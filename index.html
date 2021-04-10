@@ -57,9 +57,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <script>
-      const newText = (text) => {
+      const newText = (text, classe) => {
         const txtEl = document.createElement('div');
-        txtEl.className = 'text2';
+        txtEl.className = classe;
         txtEl.innerHTML = `
           <div class="mensminha">
             ${text}
@@ -73,8 +73,12 @@
       $(document).ready(() => {
         $('#entrada-input').on('keypress', (e) => {
           if (e.which == 13) {
-            newText($('#entrada-input').val());
+            newText($('#entrada-input').val(), 'text2');
             $('#entrada-input').val('');
+
+            setTimeout(() => {
+              newText('Charme invertido!', 'text1');
+            }, 1500);
           }
         });
       });
