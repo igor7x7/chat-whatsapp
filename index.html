@@ -44,6 +44,7 @@
       <!-- area de entradas teclado camera emojis e etc -->
       <div class="entradas">
         <img class="emojis" src="imagens/smile.png" alt="emojis" width=25px>
+        <input id="entrada-input" type="text" />
         <img class="anexos"src="imagens/clip.png" alt="anexos" width=28px>
         <img class="foto" src="imagens/camera.png" alt="camera" width=30px>
         <div class="microfone">
@@ -51,11 +52,32 @@
         </div>
 
       </div>
-
-
-
-
-
     </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script>
+      const newText = (text) => {
+        const txtEl = document.createElement('div');
+        txtEl.className = 'text2';
+        txtEl.innerHTML = `
+          <div class="mensminha">
+            ${text}
+          </div>
+          <img class="check" src="imagens/check icon 2.png" alt="check" width="15px">
+        `;
+
+        $('.chat').append(txtEl);
+      }
+
+      $(document).ready(() => {
+        $('#entrada-input').on('keypress', (e) => {
+          if (e.which == 13) {
+            newText($('#entrada-input').val());
+            $('#entrada-input').val('');
+          }
+        });
+      });
+    </script>
   </body>
 </html>
